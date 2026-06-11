@@ -1,0 +1,26 @@
+{
+  "priority": 10,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:sweetener"
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:sweetener",
+      "value": 3.0
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:meat"
+      }
+    }
+  ],
+  "time": 2.0,
+  "result": {
+    "id": "hotc:taffy",
+    "count": 1
+  }
+}

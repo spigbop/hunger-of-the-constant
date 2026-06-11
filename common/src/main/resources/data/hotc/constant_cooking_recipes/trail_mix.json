@@ -1,0 +1,68 @@
+{
+  "priority": 10,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:seed"
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:seed",
+      "value": 1.0
+    },
+    {
+      "type": "hotc:contains",
+      "ingredient": {
+        "tag": "hotc:acorns"
+      }
+    },
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:fruit"
+    },
+    {
+      "type": "hotc:contains",
+      "ingredient": {
+        "tag": "hotc:berries"
+      }
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:fruit",
+      "value": 1.0
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:meat"
+      }
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:veggie"
+      }
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:egg"
+      }
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:dairy"
+      }
+    }
+  ],
+  "time": 0.5,
+  "result": {
+    "id": "hotc:trail_mix",
+    "count": 1
+  }
+}

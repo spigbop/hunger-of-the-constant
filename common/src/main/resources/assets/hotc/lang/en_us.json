@@ -1,0 +1,19 @@
+{
+  "block.hotc.crock_pot": "Crock Pot",
+  "container.hotc.crock_pot": "Crock Pot",
+  "gui.hotc.cook": "Cook",
+  "itemGroup.hotc.Hotc": "Hunger of the Constant",
+  "item.hotc.fist_full_of_jam": "Fist Full of Jam",
+  "item.hotc.honey": "Honey",
+  "item.hotc.honey_ham": "Honey Ham",
+  "item.hotc.mandrake": "Mandrake",
+  "item.hotc.mandrake_soup": "Mandrake Soup",
+  "item.hotc.meatballs": "Meatballs",
+  "item.hotc.meaty_stew": "Meaty Stew",
+  "item.hotc.monster_lasagna": "Monster Lasagna",
+  "item.hotc.monster_meat": "Monster Meat",
+  "item.hotc.ratatouille": "Ratatouille",
+  "item.hotc.taffy": "Taffy",
+  "item.hotc.trail_mix": "Trail Mix",
+  "item.hotc.wet_goop": "Wet Goop"
+}

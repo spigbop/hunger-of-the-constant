@@ -1,0 +1,52 @@
+{
+  "values": [
+    {
+      "id": "minecraft:beef",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:cooked_beef",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:porkchop",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:cooked_porkchop",
+      "value": 1.0
+    },
+    {
+      "id": "hotc:monster_meat",
+      "value": 1.0
+    },
+    {
+      "id": "hotc:cooked_monster_meat",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:chicken",
+      "value": 0.5
+    },
+    {
+      "id": "minecraft:cooked_chicken",
+      "value": 0.5
+    },
+    {
+      "id": "minecraft:rabbit",
+      "value": 0.5
+    },
+    {
+      "id": "minecraft:cooked_rabbit",
+      "value": 0.5
+    },
+    {
+      "id": "minecraft:mutton",
+      "value": 0.5
+    },
+    {
+      "id": "minecraft:cooked_mutton",
+      "value": 0.5
+    }
+  ]
+}

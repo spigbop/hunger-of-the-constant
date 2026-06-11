@@ -1,0 +1,21 @@
+{
+  "priority": -1,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:meat"
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:inedible"
+      }
+    }
+  ],
+  "time": 0.75,
+  "result": {
+    "id": "hotc:meatballs",
+    "count": 1
+  }
+}

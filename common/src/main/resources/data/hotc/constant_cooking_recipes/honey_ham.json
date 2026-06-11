@@ -1,0 +1,32 @@
+{
+  "priority": 2,
+  "predicates": [
+    {
+      "type": "hotc:contains",
+      "ingredient": {
+        "item": "hotc:honey"
+      }
+    },
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:meat"
+    },
+    {
+      "type": "hotc:filler_more_than",
+      "category": "hotc:meat",
+      "value": 1.5
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:inedible"
+      }
+    }
+  ],
+  "time": 2.0,
+  "result": {
+    "id": "hotc:honey_ham",
+    "count": 1
+  }
+}

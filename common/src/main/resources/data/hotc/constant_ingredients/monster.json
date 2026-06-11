@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "hotc:monster_meat",
+      "value": 1.0
+    },
+    {
+      "id": "hotc:cooked_monster_meat",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:poisonous_potato",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:rotten_flesh",
+      "value": 0.5
+    }
+  ]
+}

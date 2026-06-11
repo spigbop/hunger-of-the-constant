@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "minecraft:honey_bottle",
+      "value": 1.0
+    },
+    {
+      "id": "hotc:honey",
+      "value": 1.0
+    }
+  ]
+}

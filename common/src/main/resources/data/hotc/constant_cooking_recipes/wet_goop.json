@@ -1,0 +1,13 @@
+{
+  "priority": -10,
+  "predicates": [
+    {
+      "type": "hotc:always"
+    }
+  ],
+  "time": 0.25,
+  "result": {
+    "id": "hotc:wet_goop",
+    "count": 1
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "priority": 0,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:fruit"
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:meat"
+      }
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:inedible"
+      }
+    }
+  ],
+  "time": 0.5,
+  "result": {
+    "id": "hotc:fist_full_of_jam",
+    "count": 1
+  }
+}

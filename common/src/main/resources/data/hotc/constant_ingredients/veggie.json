@@ -1,0 +1,40 @@
+{
+  "values": [
+    {
+      "id": "minecraft:carrot",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:golden_carrot",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:potato",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:baked_potato",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:poisonous_potato",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:pumpkin",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:beetroot",
+      "value": 0.5
+    },
+    {
+      "id": "minecraft:red_mushroom",
+      "value": 0.5
+    },
+    {
+      "id": "minecraft:brown_mushroom",
+      "value": 0.5
+    }
+  ]
+}

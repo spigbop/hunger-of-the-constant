@@ -1,0 +1,16 @@
+{
+  "priority": 10,
+  "predicates": [
+    {
+      "type": "hotc:contains",
+      "ingredient": {
+        "item": "hotc:mandrake"
+      }
+    }
+  ],
+  "time": 3.0,
+  "result": {
+    "id": "hotc:mandrake_soup",
+    "count": 1
+  }
+}

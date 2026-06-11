@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:smooth_stone"
+    },
+    "C": {
+      "tag": "minecraft:coals"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "###",
+    "C/C",
+    "/C/"
+  ],
+  "result": {
+    "count": 1,
+    "id": "hotc:crock_pot"
+  }
+}

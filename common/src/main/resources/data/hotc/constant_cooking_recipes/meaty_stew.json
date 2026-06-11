@@ -1,0 +1,26 @@
+{
+  "priority": 0,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:meat"
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:meat",
+      "value": 3.0
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:inedible"
+      }
+    }
+  ],
+  "time": 0.75,
+  "result": {
+    "id": "hotc:meaty_stew",
+    "count": 1
+  }
+}

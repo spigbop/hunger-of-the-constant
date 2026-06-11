@@ -1,0 +1,28 @@
+{
+  "values": [
+    {
+      "id": "minecraft:apple",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:golden_apple",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:enchanted_golden_apple",
+      "value": 3.0
+    },
+    {
+      "id": "minecraft:melon",
+      "value": 1.0
+    },
+    {
+      "id": "#hotc:berries",
+      "value": 0.5
+    },
+    {
+      "id": "minecraft:chorus_fruit",
+      "value": 0.5
+    }
+  ]
+}

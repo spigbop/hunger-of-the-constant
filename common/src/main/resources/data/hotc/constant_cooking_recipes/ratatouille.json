@@ -1,0 +1,33 @@
+{
+  "priority": 0,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:veggie"
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:veggie",
+      "value": 0.5
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:meat"
+      }
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:inedible"
+      }
+    }
+  ],
+  "time": 1.0,
+  "result": {
+    "id": "hotc:ratatouille",
+    "count": 1
+  }
+}

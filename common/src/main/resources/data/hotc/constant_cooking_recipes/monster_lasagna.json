@@ -1,0 +1,26 @@
+{
+  "priority": 10,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:monster"
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:monster",
+      "value": 2.0
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:inedible"
+      }
+    }
+  ],
+  "time": 0.5,
+  "result": {
+    "id": "hotc:monster_lasagna",
+    "count": 1
+  }
+}
