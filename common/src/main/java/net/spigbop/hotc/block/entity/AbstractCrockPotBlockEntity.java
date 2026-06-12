@@ -6,12 +6,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
@@ -26,6 +24,7 @@ import net.spigbop.hotc.block.CrockPotBlock;
 import net.spigbop.hotc.cooking.predicate.AlwaysCookingPredicate;
 import net.spigbop.hotc.cooking.recipe.CookingRecipe;
 import net.spigbop.hotc.menu.CrockPotMenu;
+import net.spigbop.hotc.sounds.ModSoundEvents;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractCrockPotBlockEntity
@@ -41,14 +40,18 @@ public abstract class AbstractCrockPotBlockEntity
                 openCount = 0;
             }
             openCount++;
-            level.playSound(
-                null,
-                getBlockPos(),
-                SoundEvents.BARREL_OPEN,
-                SoundSource.BLOCKS,
-                1.0f,
-                1.0f
-            );
+            BlockPos pos = getBlockPos();
+            if (!hasResult()) {
+                level.playSound(
+                    null,
+                    pos,
+                    ModSoundEvents.CROCK_POT_OPEN,
+                    SoundSource.BLOCKS,
+                    1.0f,
+                    1.0f
+                );
+            }
+            level.blockEvent(pos, getBlockState().getBlock(), 1, 1);
         }
     }
 
@@ -56,16 +59,38 @@ public abstract class AbstractCrockPotBlockEntity
         if (!player.isSpectator()) {
             openCount--;
             if (openCount <= 0) {
-                level.playSound(
-                    null,
-                    getBlockPos(),
-                    SoundEvents.BARREL_CLOSE,
-                    SoundSource.BLOCKS,
-                    1.0f,
-                    1.0f
-                );
+                BlockPos pos = getBlockPos();
+                setChanged();
+                if (!hasResult()) {
+                    level.playSound(
+                        null,
+                        pos,
+                        ModSoundEvents.CROCK_POT_CLOSE,
+                        SoundSource.BLOCKS,
+                        1.0f,
+                        1.0f
+                    );
+
+                    level.blockEvent(pos, getBlockState().getBlock(), 1, 0);
+                }
             }
         }
+    }
+
+    public void setOpenCount(int value) {
+        this.openCount = value;
+    }
+
+    public boolean isContainerOpen() {
+        return this.openCount > 0;
+    }
+
+    public boolean hasResult() {
+        return !this.items.get(4).isEmpty();
+    }
+
+    public boolean isLidOpen() {
+        return isContainerOpen() || hasResult();
     }
 
     private int cookTicks = 0;
@@ -74,6 +99,8 @@ public abstract class AbstractCrockPotBlockEntity
         5,
         ItemStack.EMPTY
     );
+
+    private int rattling = 0;
 
     protected AbstractCrockPotBlockEntity(
         BlockEntityType<?> type,
@@ -124,7 +151,21 @@ public abstract class AbstractCrockPotBlockEntity
         if (isCooking()) {
             return;
         }
+
         super.setItem(slot, stack);
+
+        if (slot == 4 && stack.isEmpty()) {
+            setChanged();
+            level.blockEvent(getBlockPos(), getBlockState().getBlock(), 1, 0);
+            if (level instanceof ServerLevel serverLevel) {
+                serverLevel.sendBlockUpdated(
+                    getBlockPos(),
+                    getBlockState(),
+                    getBlockState(),
+                    3
+                );
+            }
+        }
     }
 
     @Override
@@ -147,14 +188,49 @@ public abstract class AbstractCrockPotBlockEntity
         return !isCooking();
     }
 
+    public void setRattling(int value) {
+        this.rattling = value;
+    }
+
+    public boolean isRattling() {
+        return this.rattling == 1;
+    }
+
+    public ItemStack getOutput() {
+        return this.items.get(4);
+    }
+
     protected void cookTick() {
         if (!this.isCooking()) {
             return;
         }
 
         int totalTicks = (int) (BASE_COOK_TIME_TICKS * recipe.time());
-        if (totalTicks - cookTicks <= 0) {
+        int timeLeft = totalTicks - cookTicks;
+        if (timeLeft <= 0) {
             finishCook();
+        }
+
+        if (level.random.nextFloat() < 0.05F) {
+            level.playSound(
+                null,
+                this.getBlockPos(),
+                ModSoundEvents.CROCK_POT_BOIL,
+                SoundSource.BLOCKS,
+                0.4F,
+                1.0F
+            );
+        }
+
+        if (level.random.nextFloat() < 0.05F) {
+            level.playSound(
+                null,
+                this.getBlockPos(),
+                ModSoundEvents.CROCK_POT_RATTLE,
+                SoundSource.BLOCKS,
+                0.8F,
+                1.0F
+            );
         }
 
         cookTicks += 1;
@@ -165,7 +241,6 @@ public abstract class AbstractCrockPotBlockEntity
     }
 
     public void finishCook() {
-        ItemStack[] ingredients = new ItemStack[4];
         for (int i = 0;
              i < 4;
              i++
@@ -177,15 +252,26 @@ public abstract class AbstractCrockPotBlockEntity
         this.recipe = null;
         this.cookTicks = 0;
 
+        BlockPos pos = getBlockPos();
+        BlockState state = getBlockState();
+
         setChanged();
         if (level instanceof ServerLevel serverLevel) {
-            serverLevel.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            serverLevel.sendBlockUpdated(
+                pos,
+                state,
+                state,
+                3
+            );
         }
+
+        level.blockEvent(pos, state.getBlock(), 2, 0);
+        level.blockEvent(pos, state.getBlock(), 1, 1);
 
         this.getLevel().playSound(
             null,
             this.getBlockPos(),
-            SoundEvents.ARROW_HIT,
+            ModSoundEvents.CROCK_POT_FINISH,
             SoundSource.BLOCKS
         );
     }
@@ -223,23 +309,38 @@ public abstract class AbstractCrockPotBlockEntity
             viewers.forEach(ServerPlayer::closeContainer);
         }
 
+        BlockPos pos = getBlockPos();
+        BlockState state = getBlockState();
+
         setChanged();
         if (level instanceof ServerLevel serverLevel) {
-            serverLevel.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            serverLevel.sendBlockUpdated(
+                pos,
+                state,
+                state,
+                3
+            );
         }
 
-        this.getLevel().playSound(
+        level.blockEvent(pos, state.getBlock(), 2, 1);
+
+        level.playSound(
             null,
-            this.getBlockPos(),
-            SoundEvents.ARROW_SHOOT,
-            SoundSource.BLOCKS
+            pos,
+            ModSoundEvents.CROCK_POT_BOIL,
+            SoundSource.BLOCKS,
+            0.4F,
+            1.0F
         );
 
         return true;
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+    protected void saveAdditional(
+        CompoundTag tag,
+        HolderLookup.Provider registries
+    ) {
         super.saveAdditional(tag, registries);
         tag.putInt("cook_ticks", cookTicks);
         tag.putBoolean("is_cooking", isCooking());
@@ -247,23 +348,45 @@ public abstract class AbstractCrockPotBlockEntity
             tag.put("result", recipe.result().copy().save(registries));
             tag.putFloat("recipe_time", recipe.time());
         }
+        ItemStack output = items.get(4);
+        if (!output.isEmpty()) {
+            tag.put("output", output.copy().save(registries));
+        }
 
         ContainerHelper.saveAllItems(tag, items, registries);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+    protected void loadAdditional(
+        CompoundTag tag,
+        HolderLookup.Provider registries
+    ) {
         super.loadAdditional(tag, registries);
         cookTicks = tag.getInt("cook_ticks");
         ContainerHelper.loadAllItems(tag, items, registries);
         // restore recipe if was cooking
         if (tag.getBoolean("is_cooking")) {
             if (tag.contains("result")) {
-                ItemStack result = ItemStack.parse(registries, tag.getCompound("result")).orElse(ItemStack.EMPTY);
+                ItemStack result = ItemStack
+                    .parse(registries, tag.getCompound("result"))
+                    .orElse(ItemStack.EMPTY);
                 float time = tag.getFloat("recipe_time");
-                this.recipe = new CookingRecipe(10, List.of(
-                    AlwaysCookingPredicate.INSTANCE), time, result);
+                this.recipe = new CookingRecipe(
+                    10,
+                    List.of(AlwaysCookingPredicate.INSTANCE),
+                    time,
+                    result
+                );
             }
+        }
+
+        if (tag.contains("output")) {
+            ItemStack output = ItemStack
+                .parse(registries, tag.getCompound("output"))
+                .orElse(ItemStack.EMPTY);
+            items.set(4, output);
+        } else {
+            items.set(4, ItemStack.EMPTY);
         }
     }
 
@@ -272,6 +395,16 @@ public abstract class AbstractCrockPotBlockEntity
         CompoundTag tag = new CompoundTag();
         tag.putBoolean("is_cooking", isCooking());
         tag.putInt("cook_ticks", cookTicks);
+        tag.putInt("open_count", openCount);
+        if (recipe != null) {
+            tag.put("result", recipe.result().copy().save(registries));
+            tag.putFloat("recipe_time", recipe.time());
+        }
+        ItemStack output = items.get(4);
+        if (!output.isEmpty()) {
+            tag.put("output", output.copy().save(registries));
+        }
+
         return tag;
     }
 
@@ -280,14 +413,14 @@ public abstract class AbstractCrockPotBlockEntity
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-//    @Override
-//    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt, HolderLookup.Provider registries) {
-//        CompoundTag tag = pkt.getTag();
-//        if (tag != null) {
-//            cookTicks = tag.getInt("cook_ticks");
-//            // client only needs to know if cooking for animation
-//            boolean wasCooking = isCooking();
-//            // set a client-side cooking flag
-//        }
-//    }
+    //    @Override
+    //    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt, HolderLookup.Provider registries) {
+    //        CompoundTag tag = pkt.getTag();
+    //        if (tag != null) {
+    //            cookTicks = tag.getInt("cook_ticks");
+    //            // client only needs to know if cooking for animation
+    //            boolean wasCooking = isCooking();
+    //            // set a client-side cooking flag
+    //        }
+    //    }
 }

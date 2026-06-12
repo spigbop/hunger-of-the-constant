@@ -3,6 +3,10 @@
     {
       "id": "minecraft:egg",
       "value": 1.0
+    },
+    {
+      "id": "minecraft:turtle_egg",
+      "value": 1.0
     }
   ]
 }

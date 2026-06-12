@@ -23,10 +23,12 @@ public class CrockPotModel {
     );
     private final ModelPart stand;
     private final ModelPart pot;
+    private final ModelPart handle;
 
     public CrockPotModel(ModelPart root) {
         this.stand = root.getChild("stand");
         this.pot = root.getChild("pot");
+        this.handle = root.getChild("handle");
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -34,8 +36,7 @@ public class CrockPotModel {
         PartDefinition partdefinition = meshdefinition.getRoot();
 
         PartDefinition stand = partdefinition.addOrReplaceChild(
-            "stand",
-            CubeListBuilder
+            "stand", CubeListBuilder
                 .create()
                 .texOffs(0, 67)
                 .mirror()
@@ -120,11 +121,11 @@ public class CrockPotModel {
                     2.0F,
                     new CubeDeformation(0.0F)
                 )
-                .mirror(false),
-            PartPose.offset(-1.5F, 24.0F, 0.0F)
+                .mirror(false), PartPose.offset(-1.5F, 24.0F, 0.0F)
         );
 
-        PartDefinition coal_r1 = stand.addOrReplaceChild("coal_r1",
+        PartDefinition coal_r1 = stand.addOrReplaceChild(
+            "coal_r1",
             CubeListBuilder
                 .create()
                 .texOffs(20, 63)
@@ -142,39 +143,31 @@ public class CrockPotModel {
             PartPose.offsetAndRotation(1.5F, 0.0F, -1.5F, 0.0F, -1.5708F, 0.0F)
         );
 
-        PartDefinition twig_r1 = stand.addOrReplaceChild("twig_r1",
-            CubeListBuilder
-                .create()
-                .texOffs(24, 48)
-                .mirror()
-                .addBox(
-                    -3.0F,
-                    -11.0F,
-                    0.0F,
-                    3.0F,
-                    11.0F,
-                    3.0F,
-                    new CubeDeformation(0.0F)
-                )
-                .mirror(false),
+        PartDefinition twig_r1 = stand.addOrReplaceChild(
+            "twig_r1",
+            CubeListBuilder.create().texOffs(24, 48).mirror().addBox(
+                -3.0F,
+                -11.0F,
+                0.0F,
+                3.0F,
+                11.0F,
+                3.0F,
+                new CubeDeformation(0.0F)
+            ).mirror(false),
             PartPose.offsetAndRotation(3.0F, 0.15F, -6.0F, 0.0873F, 0.0F, 0.0F)
         );
 
-        PartDefinition twig_r2 = stand.addOrReplaceChild("twig_r2",
-            CubeListBuilder
-                .create()
-                .texOffs(12, 48)
-                .mirror()
-                .addBox(
-                    0.0F,
-                    -11.0F,
-                    0.0F,
-                    3.0F,
-                    11.0F,
-                    3.0F,
-                    new CubeDeformation(0.0F)
-                )
-                .mirror(false),
+        PartDefinition twig_r2 = stand.addOrReplaceChild(
+            "twig_r2",
+            CubeListBuilder.create().texOffs(12, 48).mirror().addBox(
+                0.0F,
+                -11.0F,
+                0.0F,
+                3.0F,
+                11.0F,
+                3.0F,
+                new CubeDeformation(0.0F)
+            ).mirror(false),
             PartPose.offsetAndRotation(
                 5.4F,
                 0.0F,
@@ -185,21 +178,17 @@ public class CrockPotModel {
             )
         );
 
-        PartDefinition twig_r3 = stand.addOrReplaceChild("twig_r3",
-            CubeListBuilder
-                .create()
-                .texOffs(0, 48)
-                .mirror()
-                .addBox(
-                    -3.0F,
-                    -11.0F,
-                    0.0F,
-                    3.0F,
-                    11.0F,
-                    3.0F,
-                    new CubeDeformation(0.0F)
-                )
-                .mirror(false),
+        PartDefinition twig_r3 = stand.addOrReplaceChild(
+            "twig_r3",
+            CubeListBuilder.create().texOffs(0, 48).mirror().addBox(
+                -3.0F,
+                -11.0F,
+                0.0F,
+                3.0F,
+                11.0F,
+                3.0F,
+                new CubeDeformation(0.0F)
+            ).mirror(false),
             PartPose.offsetAndRotation(
                 -2.4F,
                 0.0F,
@@ -212,65 +201,54 @@ public class CrockPotModel {
 
         PartDefinition pot = partdefinition.addOrReplaceChild(
             "pot",
-            CubeListBuilder
-                .create()
-                .texOffs(32, 40)
-                .mirror()
-                .addBox(
-                    -8.0F,
-                    -13.9F,
-                    -3.0F,
-                    2.0F,
-                    2.0F,
-                    6.0F,
-                    new CubeDeformation(0.0F)
-                )
-                .mirror(false)
-                .texOffs(32, 32)
-                .addBox(
-                    5.5F,
-                    -13.9F,
-                    -3.0F,
-                    2.0F,
-                    2.0F,
-                    6.0F,
-                    new CubeDeformation(0.0F)
-                )
-                .texOffs(0, 0)
-                .mirror()
-                .addBox(
-                    -6.0F,
-                    -15.9F,
-                    -6.0F,
-                    12.0F,
-                    6.0F,
-                    12.0F,
-                    new CubeDeformation(0.0F)
-                )
-                .mirror(false)
-                .texOffs(0, 18)
-                .mirror()
-                .addBox(
-                    -4.5F,
-                    -17.9F,
-                    -4.5F,
-                    9.0F,
-                    2.0F,
-                    9.0F,
-                    new CubeDeformation(0.0F)
-                )
-                .mirror(false)
-                .texOffs(0, 36)
-                .addBox(
-                    -3.5F,
-                    -20.4F,
-                    -1.5F,
-                    7.0F,
-                    3.0F,
-                    3.0F,
-                    new CubeDeformation(0.0F)
-                ),
+            CubeListBuilder.create().texOffs(32, 40).mirror().addBox(
+                -8.0F,
+                -13.9F,
+                -3.0F,
+                2.0F,
+                2.0F,
+                6.0F,
+                new CubeDeformation(0.0F)
+            ).mirror(false).texOffs(32, 32).addBox(
+                5.5F,
+                -13.9F,
+                -3.0F,
+                2.0F,
+                2.0F,
+                6.0F,
+                new CubeDeformation(0.0F)
+            ).texOffs(0, 0).mirror().addBox(
+                -6.0F,
+                -15.9F,
+                -6.0F,
+                12.0F,
+                6.0F,
+                12.0F,
+                new CubeDeformation(0.0F)
+            ).mirror(false),
             PartPose.offset(0.0F, 23.25F, 0.0F)
+        );
+
+        PartDefinition handle = partdefinition.addOrReplaceChild(
+            "handle",
+            CubeListBuilder.create().texOffs(0, 18).mirror().addBox(
+                -3.0F,
+                -18.65F,
+                -4.5F,
+                9.0F,
+                2.0F,
+                9.0F,
+                new CubeDeformation(0.0F)
+            ).mirror(false).texOffs(0, 36).addBox(
+                -2.0F,
+                -21.15F,
+                -1.5F,
+                7.0F,
+                3.0F,
+                3.0F,
+                new CubeDeformation(0.0F)
+            ),
+            PartPose.offset(-1.5F, 24.0F, 0.0F)
         );
 
         return LayerDefinition.create(meshdefinition, 48, 96);
@@ -281,15 +259,29 @@ public class CrockPotModel {
         VertexConsumer vertexConsumer,
         int packedLight,
         int packedOverlay,
-        float bobY
+        float bobX,
+        float bobY,
+        float bobZ,
+        boolean open
     ) {
         poseStack.mulPose(Axis.XP.rotationDegrees(180));
         poseStack.translate(0, -1.5, 0);
         stand.render(poseStack, vertexConsumer, packedLight, packedOverlay, -1);
 
         poseStack.pushPose();
-        poseStack.translate(0, bobY, 0);
+
+        poseStack.translate(bobX, bobY, bobZ);
         pot.render(poseStack, vertexConsumer, packedLight, packedOverlay, -1);
+
+        if (!open) {
+            handle.render(
+                poseStack,
+                vertexConsumer,
+                packedLight,
+                packedOverlay,
+                -1
+            );
+        }
 
         poseStack.popPose();
     }

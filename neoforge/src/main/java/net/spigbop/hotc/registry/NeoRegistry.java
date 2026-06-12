@@ -2,6 +2,7 @@ package net.spigbop.hotc.registry;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -13,6 +14,7 @@ import net.spigbop.hotc.block.ModBlocks;
 import net.spigbop.hotc.commands.CookDebugCommand;
 import net.spigbop.hotc.item.ModCreativeModeTabs;
 import net.spigbop.hotc.item.ModItems;
+import net.spigbop.hotc.sounds.ModSoundEvents;
 import net.spigbop.util.AutoRegistry;
 
 public class NeoRegistry {
@@ -69,6 +71,25 @@ public class NeoRegistry {
                                 Constants.MOD_ID,
                                 name
                             ), tab
+                        );
+                    });
+            }
+        );
+
+        // Register Sounds
+        event.register(
+            BuiltInRegistries.SOUND_EVENT.key(), helper -> {
+                AutoRegistry
+                    .getObjectsFrom(
+                        ModSoundEvents.class,
+                        SoundEvent.class
+                    )
+                    .forEach((sound, name) -> {
+                        helper.register(
+                            ResourceLocation.fromNamespaceAndPath(
+                                Constants.MOD_ID,
+                                sound.getLocation().getPath()
+                            ), sound
                         );
                     });
             }

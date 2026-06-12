@@ -9,6 +9,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.CreativeModeTab;
@@ -25,6 +26,7 @@ import net.spigbop.hotc.item.ModItems;
 import net.spigbop.hotc.menu.CrockPotMenu;
 import net.spigbop.hotc.menu.ModMenuTypes;
 import net.spigbop.hotc.network.CookPacket;
+import net.spigbop.hotc.sounds.ModSoundEvents;
 import net.spigbop.util.AutoRegistry;
 
 public class FabricRegistry {
@@ -81,6 +83,21 @@ public class FabricRegistry {
                             name
                         )
                     ), tab
+                );
+            });
+
+        // Register Sounds
+        AutoRegistry
+            .getObjectsFrom(ModSoundEvents.class, SoundEvent.class)
+            .forEach((sound, name) -> {
+                Registry.register(
+                    BuiltInRegistries.SOUND_EVENT, ResourceKey.create(
+                        BuiltInRegistries.SOUND_EVENT.key(),
+                        ResourceLocation.fromNamespaceAndPath(
+                            Constants.MOD_ID,
+                            sound.getLocation().getPath()
+                        )
+                    ), sound
                 );
             });
 

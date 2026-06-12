@@ -56,9 +56,9 @@ public class CrockPotBlock extends AbstractCrockPotBlock {
         return RenderShape.ENTITYBLOCK_ANIMATED;
     }
 
-    private static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 14, 13);
-    private static final VoxelShape COLLISION_SHAPE = Block.box(3, 0, 3, 13, 24,
-        13);
+    private static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 20, 15);
+    private static final VoxelShape COLLISION_SHAPE = Block.box(2, 0, 2, 14, 24,
+        14);
 
     @Override
     protected VoxelShape getShape(

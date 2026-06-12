@@ -1,0 +1,26 @@
+{
+  "priority": 10,
+  "predicates": [
+    {
+      "type": "hotc:contains",
+      "ingredient": {
+        "tag": "hotc:butters"
+      }
+    },
+    {
+      "type": "hotc:contains",
+      "ingredient": {
+        "tag": "hotc:berries"
+      }
+    },
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:egg"
+    }
+  ],
+  "time": 0.5,
+  "result": {
+    "id": "hotc:trail_mix",
+    "count": 1
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "block.crock_pot.open": {
+    "sounds": [
+      "hotc:block/crock_pot/open"
+    ],
+    "subtitle": "subtitles.block.hotc.crock_pot.open"
+  },
+  "block.crock_pot.close": {
+    "sounds": [
+      "hotc:block/crock_pot/close"
+    ],
+    "subtitle": "subtitles.block.hotc.crock_pot.close"
+  },
+  "block.crock_pot.finish": {
+    "sounds": [
+      "hotc:block/crock_pot/finish"
+    ],
+    "subtitle": "subtitles.block.hotc.crock_pot.finish"
+  },
+  "block.crock_pot.rattle": {
+    "sounds": [
+      "hotc:block/crock_pot/rattle01",
+      "hotc:block/crock_pot/rattle02",
+      "hotc:block/crock_pot/rattle03",
+      "hotc:block/crock_pot/rattle04"
+    ],
+    "subtitle": "subtitles.block.hotc.crock_pot.rattle"
+  },
+  "block.crock_pot.boil": {
+    "sounds": [
+      "hotc:block/crock_pot/boil01",
+      "hotc:block/crock_pot/boil02"
+    ],
+    "subtitle": "subtitles.block.hotc.crock_pot.boil"
+  }
+}
