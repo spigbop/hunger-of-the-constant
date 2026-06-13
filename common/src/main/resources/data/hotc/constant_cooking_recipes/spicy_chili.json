@@ -1,0 +1,25 @@
+{
+  "priority": 10,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:meat"
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:meat",
+      "value": 1.5
+    },
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:veggie"
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:veggie",
+      "value": 1.5
+    }
+  ],
+  "time": 0.5,
+  "result": { "id": "hotc:spicy_chili", "count": 1 }
+}

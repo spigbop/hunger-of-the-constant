@@ -3,16 +3,14 @@
   "predicates": [
     {
       "type": "hotc:contains",
-      "ingredient": {
-        "tag": "hotc:honies"
-      }
+      "ingredient": { "tag": "hotc:honies" }
     },
     {
       "type": "hotc:contains_filler",
       "category": "hotc:meat"
     },
     {
-      "type": "hotc:filler_more_than",
+      "type": "hotc:filler_at_most",
       "category": "hotc:meat",
       "value": 1.5
     },
@@ -24,9 +22,6 @@
       }
     }
   ],
-  "time": 2.0,
-  "result": {
-    "id": "hotc:honey_ham",
-    "count": 1
-  }
+  "time": 2,
+  "result": { "id": "hotc:honey_nuggets", "count": 1 }
 }

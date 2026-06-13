@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.spigbop.hotc.Constants;
 
 public record IngredientCategory(List<IngredientCategoryEntry> values) {
     public static final Codec<IngredientCategory> CODEC = RecordCodecBuilder.create(
@@ -36,14 +37,14 @@ public record IngredientCategory(List<IngredientCategoryEntry> values) {
     }
 
     /**
-     * Get value for a matching stack, -1 if no match
+     * Get value for a matching stack, 0 if no match
      */
     public float getValue(ItemStack stack, RegistryAccess registryAccess) {
         for (IngredientCategoryEntry entry : values) {
             if (entry.isTag()) {
                 TagKey<Item> tag = TagKey.create(
                     Registries.ITEM,
-                    ResourceLocation.parse(entry.id().toString().substring(1))
+                    ResourceLocation.parse(entry.id().toString())
                 );
                 if (stack.is(tag)) {
                     return entry.value();

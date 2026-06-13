@@ -1,0 +1,40 @@
+{
+  "priority": 10,
+  "predicates": [
+    {
+      "type": "hotc:contains",
+      "ingredient": { "item": "minecraft:melon_slice" }
+    },
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:frozen"
+    },
+    {
+      "type": "hotc:contains",
+      "ingredient": { "item": "minecraft:stick" }
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:meat"
+      }
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:veggie"
+      }
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:egg"
+      }
+    }
+  ],
+  "time": 0.5,
+  "result": { "id": "hotc:melonsicle", "count": 1 }
+}

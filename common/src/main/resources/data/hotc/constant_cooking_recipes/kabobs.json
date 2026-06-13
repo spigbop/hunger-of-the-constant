@@ -1,0 +1,25 @@
+{
+  "priority": 5,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:meat"
+    },
+    {
+      "type": "hotc:contains",
+      "ingredient": { "item": "minecraft:stick" }
+    },
+    {
+      "type": "hotc:filler_at_most",
+      "category": "hotc:monster",
+      "value": 1.0
+    },
+    {
+      "type": "hotc:filler_less_than",
+      "category": "hotc:inedible",
+      "value": 1.0
+    }
+  ],
+  "time": 2,
+  "result": { "id": "hotc:kabobs", "count": 1 }
+}

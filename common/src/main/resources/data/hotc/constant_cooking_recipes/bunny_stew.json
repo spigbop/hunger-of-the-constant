@@ -1,0 +1,32 @@
+{
+  "priority": 1,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:meat"
+    },
+    {
+      "type": "hotc:filler_less_than",
+      "category": "hotc:meat",
+      "value": 1.0
+    },
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:frozen"
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:frozen",
+      "value": 2.0
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:inedible"
+      }
+    }
+  ],
+  "time": 0.5,
+  "result": { "id": "hotc:bunny_stew", "count": 1 }
+}

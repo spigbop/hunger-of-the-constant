@@ -14,7 +14,11 @@
     },
     {
       "id": "minecraft:melon",
-      "value": 1.0
+      "value": 2.0
+    },
+    {
+      "id": "minecraft:melon_slice",
+      "value": 0.5
     },
     {
       "id": "#hotc:berries",

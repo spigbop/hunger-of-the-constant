@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.spigbop.hotc.Constants;
 import net.spigbop.hotc.cooking.category.IngredientCategoryKey;
 
 public class FillerAtLeastCookingPredicate extends CookingPredicate {

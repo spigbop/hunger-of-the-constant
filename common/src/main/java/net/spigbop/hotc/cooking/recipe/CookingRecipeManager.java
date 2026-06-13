@@ -19,10 +19,10 @@ import net.minecraft.world.level.Level;
 import net.spigbop.hotc.Constants;
 
 public class CookingRecipeManager extends SimpleJsonResourceReloadListener {
-    public static CookingRecipeManager INSTANCE = new CookingRecipeManager();
-
-    private static final Gson GSON = new GsonBuilder().create();
     public static final String DIRECTORY_NAME = "constant_cooking_recipes";
+    private static final Gson GSON = new GsonBuilder().create();
+
+    public static CookingRecipeManager INSTANCE = new CookingRecipeManager();
 
     private List<CookingRecipe> recipes = List.of();
 
@@ -38,7 +38,7 @@ public class CookingRecipeManager extends SimpleJsonResourceReloadListener {
     ) {
         List<CookingRecipe> loaded = new ArrayList<>();
         data.forEach((id, json) -> {
-            Constants.LOG.info("Registering cooking recipe: " + id.toString());
+            //            Constants.LOG.info("Registering cooking recipe: " + id.toString());
             CookingRecipe.CODEC
                 .parse(JsonOps.INSTANCE, json)
                 .ifSuccess(loaded::add)
@@ -58,7 +58,8 @@ public class CookingRecipeManager extends SimpleJsonResourceReloadListener {
     }
 
     /**
-     * Returns the first matching recipe by priority
+     * Returns the first matching recipe by priority, if several recipes match,
+     * returns a random one in matching recipes.
      */
     public Optional<CookingRecipe> findMatch(
         Level level,
@@ -76,7 +77,6 @@ public class CookingRecipeManager extends SimpleJsonResourceReloadListener {
 
         // Get the highest priority among matches
         int topPriority = matching.getFirst().priority();
-        // descending
 
         // Collect all recipes tied at that priority
         List<CookingRecipe> candidates = matching

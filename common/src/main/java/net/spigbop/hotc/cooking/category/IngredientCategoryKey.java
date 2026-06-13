@@ -1,17 +1,20 @@
 package net.spigbop.hotc.cooking.category;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.Util;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 public class IngredientCategoryKey {
     public static final Codec<IngredientCategoryKey> CODEC = ResourceLocation.CODEC.xmap(IngredientCategoryKey::of,
-        IngredientCategoryKey::id
+        IngredientCategoryKey::getLocation
     );
 
     private final ResourceLocation id;
+    private String descriptionId;
 
     private IngredientCategoryKey(ResourceLocation id) {
         this.id = id;
@@ -27,8 +30,23 @@ public class IngredientCategoryKey {
         ));
     }
 
-    public ResourceLocation id() {
+    public ResourceLocation getLocation() {
         return id;
+    }
+
+    public String getOrCreateDescriptionId() {
+        if (this.descriptionId == null) {
+            this.descriptionId = Util.makeDescriptionId(
+                "ingredient_category",
+                this.id
+            );
+        }
+
+        return this.descriptionId;
+    }
+
+    public Component getDisplayName() {
+        return Component.translatable(this.getOrCreateDescriptionId());
     }
 
     public boolean contains(ItemStack item, RegistryAccess registryAccess) {

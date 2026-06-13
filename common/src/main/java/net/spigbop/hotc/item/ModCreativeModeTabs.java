@@ -13,16 +13,21 @@ public class ModCreativeModeTabs {
             out.accept(ModItems.CROCK_POT);
 
             out.accept(ModItems.MONSTER_MEAT);
+            out.accept(ModItems.COOKED_MONSTER_MEAT);
+            out.accept(ModItems.FROG_LEGS);
+            out.accept(ModItems.COOKED_FROG_LEGS);
             out.accept(ModItems.HONEY);
             out.accept(ModItems.BUTTER);
             out.accept(ModItems.MANDRAKE);
 
             out.accept(ModItems.WET_GOOP);
             out.accept(ModItems.MEATBALLS);
+            out.accept(ModItems.HONEY_NUGGETS);
             out.accept(ModItems.HONEY_HAM);
             out.accept(ModItems.WAFFLES);
             out.accept(ModItems.MONSTER_LASAGNA);
             out.accept(ModItems.RATATOUILLE);
+            out.accept(ModItems.FROGGLE_BUNWICH);
             out.accept(ModItems.TRAIL_MIX);
             out.accept(ModItems.TAFFY);
             out.accept(ModItems.FIST_FULL_OF_JAM);
@@ -31,7 +36,7 @@ public class ModCreativeModeTabs {
             out.accept(ModItems.ICE_CREAM);
             out.accept(ModItems.MELONSICLE);
             out.accept(ModItems.PIEROGI);
-            out.accept(ModItems.SPICY_CHILLI);
+            out.accept(ModItems.SPICY_CHILI);
             out.accept(ModItems.BUNNY_STEW);
             out.accept(ModItems.TURKEY_DINNER);
             out.accept(ModItems.SURF_N_TURF);

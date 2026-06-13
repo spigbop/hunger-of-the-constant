@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "minecraft:chicken",
+      "value": 1.0
+    },
+    {
+      "id": "minecraft:cooked_chicken",
+      "value": 1.0
+    }
+  ]
+}

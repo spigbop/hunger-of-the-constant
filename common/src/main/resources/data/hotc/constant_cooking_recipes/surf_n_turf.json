@@ -1,0 +1,32 @@
+{
+  "priority": 30,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:meat"
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:meat",
+      "value": 2.5
+    },
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:fish"
+    },
+    {
+      "type": "hotc:filler_at_least",
+      "category": "hotc:fish",
+      "value": 1.5
+    },
+    {
+      "type": "hotc:not",
+      "predicate": {
+        "type": "hotc:contains_filler",
+        "category": "hotc:frozen"
+      }
+    }
+  ],
+  "time": 1,
+  "result": { "id": "hotc:surf_n_turf", "count": 1 }
+}

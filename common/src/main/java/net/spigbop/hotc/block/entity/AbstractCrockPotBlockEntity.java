@@ -16,6 +16,7 @@ import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -245,7 +246,12 @@ public abstract class AbstractCrockPotBlockEntity
              i < 4;
              i++
         ) {
-            items.set(i, ItemStack.EMPTY);
+            Item remaining = items.get(i).getItem().getCraftingRemainingItem();
+            if (remaining == null) {
+                items.set(i, ItemStack.EMPTY);
+            } else {
+                items.set(i, new ItemStack(remaining));
+            }
         }
 
         this.items.set(4, CrockPotBlock.finishCook(recipe));
@@ -295,7 +301,6 @@ public abstract class AbstractCrockPotBlockEntity
              i++
         ) {
             ingredients[i] = items.get(i);
-            items.set(i, ItemStack.EMPTY);
         }
         this.recipe = CrockPotBlock.startCook(this.getLevel(), ingredients);
 

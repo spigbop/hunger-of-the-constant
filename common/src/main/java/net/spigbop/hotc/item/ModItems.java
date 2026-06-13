@@ -10,19 +10,38 @@ import net.spigbop.hotc.block.ModBlocks;
 public class ModItems {
     public static final Item MONSTER_MEAT = new EffectGivingFoodItem(new Item.Properties().food(
         new FoodProperties.Builder()
-            .nutrition(3)
+            .nutrition(2)
             .saturationModifier(0.25F)
             .effect(new MobEffectInstance(MobEffects.POISON, 80), 0.5F)
+            .build()));
+    public static final Item COOKED_MONSTER_MEAT = new EffectGivingFoodItem(new Item.Properties().food(
+        new FoodProperties.Builder()
+            .nutrition(3)
+            .saturationModifier(0.25F)
+            .effect(new MobEffectInstance(MobEffects.POISON, 40), 0.4F)
+            .build()));
+    public static final Item FROG_LEGS = new Item(new Item.Properties().food(new FoodProperties.Builder()
+        .nutrition(3)
+        .saturationModifier(0.25F)
+        .build()));
+    public static final Item COOKED_FROG_LEGS = new Item(new Item.Properties().food(
+        new FoodProperties.Builder()
+            .nutrition(3)
+            .saturationModifier(0.25F)
             .build()));
     public static final Item HONEY = new Item(new Item.Properties().food(new FoodProperties.Builder()
         .nutrition(1)
         .saturationModifier(0.3F)
         .build()));
-    public static final Item BUTTER = new Item(new Item.Properties().food(new FoodProperties.Builder()
-        .nutrition(3)
-        .saturationModifier(0.3F)
-        .effect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1), 1.0F)
-        .build()));
+    public static final Item BUTTER = new EffectGivingFoodItem(new Item.Properties().food(
+        new FoodProperties.Builder()
+            .nutrition(3)
+            .saturationModifier(0.3F)
+            .effect(
+                new MobEffectInstance(MobEffects.REGENERATION, 200, 1),
+                1.0F
+            )
+            .build()));
     public static final Item MANDRAKE = new Item(new Item.Properties().food(new FoodProperties.Builder()
         .nutrition(10)
         .saturationModifier(1.2F)
@@ -42,16 +61,24 @@ public class ModItems {
         .nutrition(9)
         .saturationModifier(0.8F)
         .build()));
-    public static final Item HONEY_HAM = new Item(new Item.Properties().food(new FoodProperties.Builder()
-        .nutrition(10)
-        .saturationModifier(0.9F)
-        .build()));
+    public static final Item HONEY_NUGGETS = new EffectGivingFoodItem(new Item.Properties().food(
+        new FoodProperties.Builder()
+            .nutrition(4)
+            .saturationModifier(0.9F)
+            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 800), 1.0F)
+            .build()));
+    public static final Item HONEY_HAM = new EffectGivingFoodItem(new Item.Properties().food(
+        new FoodProperties.Builder()
+            .nutrition(10)
+            .saturationModifier(0.9F)
+            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 1800), 1.0F)
+            .build()));
     public static final Item WAFFLES = new EffectGivingFoodItem(new Item.Properties().food(
         new FoodProperties.Builder()
             .nutrition(5)
             .saturationModifier(0.9F)
             .effect(
-                new MobEffectInstance(MobEffects.REGENERATION, 160, 1),
+                new MobEffectInstance(MobEffects.REGENERATION, 320, 1),
                 1.0F
             )
             .build()));
@@ -63,15 +90,22 @@ public class ModItems {
             .build()));
     public static final Item RATATOUILLE = new Item(new Item.Properties().food(
         new FoodProperties.Builder()
+            .nutrition(3)
+            .saturationModifier(0.8F)
+            .build()));
+    public static final Item FROGGLE_BUNWICH = new EffectGivingFoodItem(new Item.Properties().food(
+        new FoodProperties.Builder()
             .nutrition(4)
             .saturationModifier(0.8F)
+            .effect(new MobEffectInstance(MobEffects.JUMP, 1200), 1.0F)
             .build()));
     public static final Item TRAIL_MIX = new EffectGivingFoodItem(new Item.Properties().food(
         new FoodProperties.Builder()
             .nutrition(2)
             .saturationModifier(0.4F)
             .fast()
-            .effect(new MobEffectInstance(MobEffects.REGENERATION, 80, 1), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.REGENERATION, 160, 1),
+                1.0F)
             .build()));
     public static final Item TAFFY = new EffectGivingFoodItem(new Item.Properties().food(
         new FoodProperties.Builder()
@@ -95,7 +129,7 @@ public class ModItems {
             .nutrition(4)
             .saturationModifier(0.8F)
             .effect(
-                new MobEffectInstance(MobEffects.REGENERATION, 100, 1),
+                new MobEffectInstance(MobEffects.REGENERATION, 200, 1),
                 1.0F
             )
             .build()));
@@ -116,18 +150,19 @@ public class ModItems {
             .nutrition(3)
             .saturationModifier(0.8F)
             .effect(
-                new MobEffectInstance(MobEffects.REGENERATION, 100, 1),
+                new MobEffectInstance(MobEffects.REGENERATION, 200, 1),
                 1.0F
             )
             .build()));
-    public static final Item SPICY_CHILLI = new EffectGivingFoodItem(new Item.Properties().food(
+    public static final Item SPICY_CHILI = new EffectGivingFoodItem(new Item.Properties().food(
         new FoodProperties.Builder()
             .nutrition(3)
             .saturationModifier(0.8F)
-            .effect(new MobEffectInstance(MobEffects.REGENERATION, 50, 1), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1),
+                1.0F)
             .effect(
-                new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200, 1),
-                0.4F
+                new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 4800, 1),
+                1.0F
             )
             .build()));
     public static final Item TURKEY_DINNER = new EffectGivingFoodItem(new Item.Properties().food(
@@ -144,7 +179,7 @@ public class ModItems {
             .nutrition(3)
             .saturationModifier(0.8F)
             .effect(
-                new MobEffectInstance(MobEffects.REGENERATION, 150, 1),
+                new MobEffectInstance(MobEffects.REGENERATION, 300, 1),
                 1.0F
             )
             .build()));
@@ -152,7 +187,7 @@ public class ModItems {
         new FoodProperties.Builder()
             .nutrition(3)
             .saturationModifier(0.8F)
-            .effect(new MobEffectInstance(MobEffects.REGENERATION, 20, 1), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.REGENERATION, 60, 1), 1.0F)
             .build()));
     public static final Item MEATY_STEW = new Item(new Item.Properties().food(
         new FoodProperties.Builder()
@@ -164,9 +199,9 @@ public class ModItems {
             .nutrition(20)
             .saturationModifier(1.2F)
             .alwaysEdible()
-            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 2400), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 4800), 1.0F)
             .effect(
-                new MobEffectInstance(MobEffects.REGENERATION, 200, 1),
+                new MobEffectInstance(MobEffects.REGENERATION, 600, 1),
                 1.0F
             )
             .build()));

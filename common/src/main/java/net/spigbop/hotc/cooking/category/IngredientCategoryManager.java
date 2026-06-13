@@ -20,10 +20,10 @@ public class IngredientCategoryManager
     extends SimpleJsonResourceReloadListener
 {
     public static final String DIRECTORY_NAME = "constant_ingredients";
+    private static final Gson GSON = new GsonBuilder().create();
 
     public static IngredientCategoryManager INSTANCE = new IngredientCategoryManager();
 
-    private static final Gson GSON = new GsonBuilder().create();
     private Map<ResourceLocation, IngredientCategory> categories = Map.of();
 
     public IngredientCategoryManager() {
@@ -59,7 +59,7 @@ public class IngredientCategoryManager
     }
 
     public Optional<IngredientCategory> get(IngredientCategoryKey key) {
-        return Optional.ofNullable(categories.get(key.id()));
+        return Optional.ofNullable(categories.get(key.getLocation()));
     }
 
     public Optional<IngredientCategory> get(ResourceLocation id) {

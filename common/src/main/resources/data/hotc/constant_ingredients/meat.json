@@ -47,6 +47,18 @@
     {
       "id": "minecraft:cooked_mutton",
       "value": 0.5
+    },
+    {
+      "id": "hotc:frog_legs",
+      "value": 0.5
+    },
+    {
+      "id": "hotc:cooked_frog_legs",
+      "value": 0.5
+    },
+    {
+      "id": "#minecraft:fishes",
+      "value": 0.5
     }
   ]
 }

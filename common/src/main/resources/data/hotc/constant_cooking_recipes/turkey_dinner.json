@@ -1,0 +1,39 @@
+{
+  "priority": 10,
+  "predicates": [
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:poultry"
+    },
+    {
+      "type": "hotc:filler_more_than",
+      "category": "hotc:poultry",
+      "value": 1.0
+    },
+    {
+      "type": "hotc:contains_filler",
+      "category": "hotc:meat"
+    },
+    {
+      "type": "hotc:filler_more_than",
+      "category": "hotc:meat",
+      "value": 1.0
+    },
+    {
+      "type": "hotc:any",
+      "predicates": [
+        {
+          "type": "hotc:filler_at_least",
+          "category": "hotc:veggie",
+          "value": 0.5
+        },
+        {
+          "type": "hotc:contains_filler",
+          "category": "hotc:fruit"
+        }
+      ]
+    }
+  ],
+  "time": 3,
+  "result": { "id": "hotc:turkey_dinner", "count": 1 }
+}

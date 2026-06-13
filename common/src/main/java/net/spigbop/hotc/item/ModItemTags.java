@@ -13,4 +13,10 @@ public class ModItemTags {
     public static final TagKey<Item> BERRIES =
         TagKey.create(Registries.ITEM,
             ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "berries"));
+    public static final TagKey<Item> EGGS =
+        TagKey.create(Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "eggs"));
+    public static final TagKey<Item> HONIES =
+        TagKey.create(Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "honies"));
 }

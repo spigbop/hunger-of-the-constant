@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.spigbop.hotc.HotcFabric"
+      "net.spigbop.hotc.FabricHotc"
     ],
     "client": [
       "net.spigbop.hotc.client.HotcFabricClient"
