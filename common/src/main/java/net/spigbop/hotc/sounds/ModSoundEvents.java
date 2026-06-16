@@ -35,4 +35,11 @@ public class ModSoundEvents {
                 Constants.MOD_ID,
                 "block.crock_pot.boil"
             ));
+
+    public static final SoundEvent MANDRAKE_BREAK =
+        SoundEvent.createVariableRangeEvent(
+            ResourceLocation.fromNamespaceAndPath(
+                Constants.MOD_ID,
+                "block.mandrake.break"
+            ));
 }

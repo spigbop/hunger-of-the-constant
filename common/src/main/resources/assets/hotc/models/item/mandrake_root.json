@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "hotc:item/spicy_chili"
+    "layer0": "hotc:item/mandrake_root"
   }
 }

@@ -63,10 +63,20 @@ public class CookingPredicateTypes {
         String name,
         MapCodec<T> codec
     ) {
-//        Constants.LOG.info("Registering cooking predicate: " + name);
         return Registry.register(
             REGISTRY,
             ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, name),
+            codec
+        );
+    }
+
+    public static <T extends CookingPredicate> MapCodec<T> register(
+        ResourceLocation location,
+        MapCodec<T> codec
+    ) {
+        return Registry.register(
+            REGISTRY,
+            location,
             codec
         );
     }

@@ -22,8 +22,16 @@ public class ModBlocks {
         .instrument(NoteBlockInstrument.BASS)
         .sound(SoundType.LANTERN)
         //.lightLevel(litBlockEmission(10))
-        .strength(3.0F)
-        .requiresCorrectToolForDrops()
+        .strength(2.0F)
+        .noOcclusion()
+        .ignitedByLava());
+
+    public static final Block MANDRAKE = new MandrakeBlock(BlockBehaviour.Properties
+        .of()
+        .mapColor(MapColor.TERRACOTTA_WHITE)
+        .instrument(NoteBlockInstrument.FLUTE)
+        .sound(ModSoundType.MANDRAKE)
+        .strength(0.6F)
         .noOcclusion()
         .ignitedByLava());
 }

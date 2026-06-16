@@ -1,5 +1,6 @@
 {
   "block.hotc.crock_pot": "Crock Pot",
+  "block.hotc.mandrake": "Mandrake Root",
   "constant_ingredient.hotc.egg": "Egg",
   "constant_ingredient.hotc.fish": "Fish",
   "constant_ingredient.hotc.frozen": "Frozen",
@@ -48,6 +49,7 @@
   "subtitles.block.hotc.crock_pot.finish": "Crock pot finishes",
   "subtitles.block.hotc.crock_pot.rattle": "Crock pot rattles",
   "subtitles.block.hotc.crock_pot.boil": "Crock pot boils",
+  "subtitles.block.hotc.mandrake.break": "Mandrake dies",
   "tag.item.hotc.acorns": "Acorns",
   "tag.item.hotc.berries": "Berries",
   "tag.item.hotc.butters": "Butters",

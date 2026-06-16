@@ -32,5 +32,11 @@
       "hotc:block/crock_pot/boil02"
     ],
     "subtitle": "subtitles.block.hotc.crock_pot.boil"
+  },
+  "block.mandrake.break": {
+    "sounds": [
+      "hotc:block/mandrake/break"
+    ],
+    "subtitle": "subtitles.block.hotc.mandrake.break"
   }
 }

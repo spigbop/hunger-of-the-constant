@@ -19,6 +19,7 @@ public class ModCreativeModeTabs {
             out.accept(ModItems.HONEY);
             out.accept(ModItems.BUTTER);
             out.accept(ModItems.MANDRAKE);
+            out.accept(ModItems.MANDRAKE_ROOT);
 
             out.accept(ModItems.WET_GOOP);
             out.accept(ModItems.MEATBALLS);
