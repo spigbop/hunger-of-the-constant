@@ -4,8 +4,9 @@
 	"parent": "minecraft:block/block",
 	"textures": {
 		"0": "hotc:block/mandrake",
-		"particle": "minecraft:block/short_grass"
+		"particle": "hotc:block/mandrake"
 	},
+    "render_type": "minecraft:cutout",
 	"elements": [
 		{
 			"name": "root",

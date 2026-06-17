@@ -20,3 +20,13 @@ and come across new resources in the wild.
 
 Visit the development wiki to get started:
 https://github.com/spigbop/hunger-of-the-constant/wiki
+
+## Reporting Issues
+
+You can report issues on GitHub, please be descriptive on what causes your
+issue: https://github.com/spigbop/hunger-of-the-constant/issues
+
+## Disclaimer
+
+This mod is not affiliated with Klei. If you like this mod, please visit 
+[their website](https://www.klei.com/) to support their amazing work.

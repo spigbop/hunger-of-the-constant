@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 75,
+  "experience": 0.2,
+  "ingredient": {
+    "item": "hotc:frog_legs"
+  },
+  "result": {
+    "id": "hotc:cooked_frog_legs"
+  }
+}

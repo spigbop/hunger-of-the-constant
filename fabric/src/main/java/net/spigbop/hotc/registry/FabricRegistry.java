@@ -1,6 +1,9 @@
 package net.spigbop.hotc.registry;
 
 import java.util.function.Function;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -10,11 +13,16 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.spigbop.hotc.Constants;
 import net.spigbop.hotc.block.ModBlocks;
 import net.spigbop.hotc.block.entity.FabricBlockEntityType;
@@ -22,6 +30,9 @@ import net.spigbop.hotc.cooking.category.FabricIngredientCategoryManager;
 import net.spigbop.hotc.cooking.recipe.FabricCookingRecipeManager;
 import net.spigbop.hotc.item.ModCreativeModeTabs;
 import net.spigbop.hotc.item.ModItems;
+import net.spigbop.hotc.levelgen.feature.ModFeatures;
+import net.spigbop.hotc.levelgen.feature.ModPlacedFeatures;
+import net.spigbop.hotc.loot.ModLootTables;
 import net.spigbop.hotc.menu.CrockPotMenu;
 import net.spigbop.hotc.menu.ModMenuTypes;
 import net.spigbop.hotc.network.CookPacket;
@@ -59,6 +70,33 @@ public class FabricRegistry {
         );
     }
 
+    public static void registerLootModifiers() {
+        LootTableEvents.MODIFY.register((resourceKey, builder, lootTableSource, _p) -> {
+            if (lootTableSource.isBuiltin()) {
+                AutoRegistry.getObjectsFrom(
+                    ModLootTables.class,
+                    ModLootTables.LootModifierContext.class
+                ).forEach((ctx, name) -> {
+                    if (resourceKey == ctx.base()) {
+                        builder
+                            .withPool(LootPool
+                                .lootPool()
+                                .add(NestedLootTable.lootTableReference(ctx.key())))
+                            .build();
+                    }
+                });
+            }
+        });
+    }
+
+    public static void registerBiomeModifications() {
+        BiomeModifications.addFeature(
+            BiomeSelectors.tag(BiomeTags.IS_FOREST),
+            GenerationStep.Decoration.VEGETAL_DECORATION,
+            ModPlacedFeatures.MANDRAKE
+        );
+    }
+
     public static void registerAutos() {
         // Register Blocks
         registerAllFromClass(
@@ -91,10 +129,17 @@ public class FabricRegistry {
             SoundEvent.class,
             (sound) -> sound.getLocation().getPath()
         );
+
+        // Register Features
+        registerAllFromClass(
+            BuiltInRegistries.FEATURE,
+            ModFeatures.class,
+            Feature.class
+        );
     }
 
-    private static <T> void registerAllFromClass(
-        Registry<T> registry,
+    private static <V, T extends V> void registerAllFromClass(
+        Registry<V> registry,
         Class<?> registryClass,
         Class<T> type
     ) {
@@ -137,7 +182,9 @@ public class FabricRegistry {
     public static void register() {
         registerManagers();
         registerAutos();
-        registerMenus();
+        registerBiomeModifications();
+        registerLootModifiers();
         registerPackets();
+        registerMenus();
     }
 }

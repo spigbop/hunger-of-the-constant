@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 450,
+  "experience": 0.2,
+  "ingredient": {
+    "item": "hotc:frog_legs"
+  },
+  "result": {
+    "id": "hotc:cooked_frog_legs"
+  }
+}

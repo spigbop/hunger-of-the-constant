@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -22,6 +23,7 @@ import net.spigbop.hotc.cooking.category.IngredientCategoryManager;
 import net.spigbop.hotc.cooking.recipe.CookingRecipeManager;
 import net.spigbop.hotc.item.ModCreativeModeTabs;
 import net.spigbop.hotc.item.ModItems;
+import net.spigbop.hotc.levelgen.feature.ModFeatures;
 import net.spigbop.hotc.menu.ModMenuTypes;
 import net.spigbop.hotc.menu.NeoMenuTypes;
 import net.spigbop.hotc.network.CookPacket;
@@ -81,10 +83,17 @@ public class NeoRegistry {
                 );
             }
         );
+
+        // Register Features
+        event.register(
+            BuiltInRegistries.FEATURE.key(), helper -> {
+                registerAllFromClass(helper, ModFeatures.class, Feature.class);
+            }
+        );
     }
 
-    private static <T> void registerAllFromClass(
-        RegisterEvent.RegisterHelper<T> helper,
+    private static <V, T extends V> void registerAllFromClass(
+        RegisterEvent.RegisterHelper<V> helper,
         Class<?> registryClass,
         Class<T> type
     ) {
@@ -100,8 +109,8 @@ public class NeoRegistry {
             });
     }
 
-    private static <T> void registerAllFromClass(
-        RegisterEvent.RegisterHelper<T> helper,
+    private static <V, T extends V> void registerAllFromClass(
+        RegisterEvent.RegisterHelper<V> helper,
         Class<?> registryClass,
         Class<T> type,
         Function<T, String> nameProvider

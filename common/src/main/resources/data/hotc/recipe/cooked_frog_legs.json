@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 150,
+  "experience": 0.2,
+  "ingredient": {
+    "item": "hotc:frog_legs"
+  },
+  "result": {
+    "id": "hotc:cooked_frog_legs"
+  }
+}

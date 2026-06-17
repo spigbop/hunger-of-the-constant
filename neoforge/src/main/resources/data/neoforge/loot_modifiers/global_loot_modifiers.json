@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "entries": [
+    "hotc:add_bee",
+    "hotc:add_frog",
+    "hotc:add_cave_spider",
+    "hotc:add_elder_guardian",
+    "hotc:add_ender_dragon",
+    "hotc:add_enderman",
+    "hotc:add_guardian",
+    "hotc:add_ravager",
+    "hotc:add_spider",
+    "hotc:add_warden"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0,
+  "ingredient": {
+    "item": "hotc:monster_meat"
+  },
+  "result": {
+    "id": "hotc:cooked_monster_meat"
+  }
+}
