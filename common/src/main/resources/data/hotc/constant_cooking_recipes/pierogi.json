@@ -26,6 +26,6 @@
       }
     }
   ],
-  "time": 1,
+  "time": 1.0,
   "result": { "id": "hotc:pierogi", "count": 1 }
 }

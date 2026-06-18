@@ -209,7 +209,7 @@ public class ModItems {
             .alwaysEdible()
             .effect(new MobEffectInstance(MobEffects.ABSORPTION, 4800), 1.0F)
             .effect(
-                new MobEffectInstance(MobEffects.REGENERATION, 600, 1),
+                new MobEffectInstance(MobEffects.REGENERATION, 1800, 1),
                 1.0F
             )
             .build()));

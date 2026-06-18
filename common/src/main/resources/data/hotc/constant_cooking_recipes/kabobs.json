@@ -15,11 +15,11 @@
       "value": 1.0
     },
     {
-      "type": "hotc:filler_less_than",
+      "type": "hotc:filler_at_most",
       "category": "hotc:inedible",
       "value": 1.0
     }
   ],
-  "time": 2,
+  "time": 2.0,
   "result": { "id": "hotc:kabobs", "count": 1 }
 }
